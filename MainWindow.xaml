@@ -3,9 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         Title="Apple TV+ for PC"
-        Height="900" Width="1400"
-        Background="#000000">
-    <Grid>
-        <wv2:WebView2 x:Name="Browser" />
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        Background="Black"
+        ShowInTaskbar="True">
+
+    <Grid Background="Black">
+        <wv2:WebView2 x:Name="Browser"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"/>
     </Grid>
 </Window>
