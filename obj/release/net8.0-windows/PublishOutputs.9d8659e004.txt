@@ -1,0 +1,13 @@
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\AppleTVForPC.exe
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\AppleTVForPC.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\AppleTVForPC.deps.json
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\AppleTVForPC.runtimeconfig.json
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\AppleTVForPC.pdb
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\DiscordRPC.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\Microsoft.Web.WebView2.Core.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\stedu\Downloads\Apple tv\bin\release\net8.0-windows\publish\Newtonsoft.Json.dll
