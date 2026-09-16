@@ -9,14 +9,21 @@ namespace AppleTVForPC
 {
     public partial class MainWindow : Window
     {
-        // Register your own app at https://discord.com/developers/applications
-        // and paste its Client ID here to enable Rich Presence.
-        private const string DiscordClientId = "YOUR_DISCORD_APPLICATION_ID";
+        // Register your own app at:
+        // https://discord.com/developers/applications
+        //
+        // Paste your Client ID here to enable Discord Rich Presence.
+        private const string DiscordClientId =
+            "YOUR_DISCORD_APPLICATION_ID";
 
         private DiscordRpcClient? _discord;
         private readonly DateTime _sessionStart = DateTime.UtcNow;
 
-        private bool _isFullscreen = true;
+        private bool _isFullscreen = false;
+
+        // Store the normal window size/position so we can restore it.
+        private double _normalWidth = 1400;
+        private double _normalHeight = 900;
 
         public MainWindow()
         {
@@ -25,108 +32,197 @@ namespace AppleTVForPC
             Loaded += MainWindow_Loaded;
             Closed += MainWindow_Closed;
 
+            // Keyboard controls
             PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
-        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(
+            object sender,
+            RoutedEventArgs e)
         {
-            // Enter proper fullscreen
-            EnterFullscreen();
-
             InitializeDiscord();
 
-            // Keep the Apple TV+ login/profile session on disk between launches.
+            // Keep Apple TV login/profile/session data between launches.
             var userDataFolder = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
                 "AppleTVForPC",
                 "WebView2Data");
 
-            var env = await CoreWebView2Environment.CreateAsync(
-                userDataFolder: userDataFolder);
+            var env =
+                await CoreWebView2Environment.CreateAsync(
+                    userDataFolder: userDataFolder);
 
             await Browser.EnsureCoreWebView2Async(env);
 
-            // Everyday desktop Chromium UA so tv.apple.com serves its normal web player.
+            /*
+             * Use a current desktop Chromium user agent.
+             *
+             * Apple officially supports Chrome, Firefox and Edge
+             * on Windows for tv.apple.com, with compatible content
+             * available up to 1080p.
+             */
             Browser.CoreWebView2.Settings.UserAgent =
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-                "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                "AppleWebKit/537.36 (KHTML, like Gecko) " +
+                "Chrome/151.0.0.0 Safari/537.36";
 
-            Browser.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
-            Browser.CoreWebView2.Settings.AreDevToolsEnabled = true;
+            /*
+             * Keep normal Chromium/WebView2 rendering features enabled.
+             */
+            Browser.CoreWebView2.Settings.AreDefaultContextMenusEnabled =
+                true;
 
+            Browser.CoreWebView2.Settings.AreDevToolsEnabled =
+                true;
+
+            /*
+             * Make the WebView background black.
+             * This prevents a white flash around the page/video.
+             */
+            Browser.CoreWebView2.Profile.PreferredColorScheme =
+                CoreWebView2PreferredColorScheme.Dark;
+
+            /*
+             * Detect page title changes for Discord Rich Presence.
+             */
             Browser.CoreWebView2.DocumentTitleChanged +=
                 CoreWebView2_DocumentTitleChanged;
 
-            Browser.CoreWebView2.NewWindowRequested += (s, args) =>
-            {
-                // Open popups (sign-in, help links) in the same view
-                // instead of a new OS window.
-                args.Handled = true;
-                Browser.CoreWebView2.Navigate(args.Uri);
-            };
+            /*
+             * Keep Apple TV links/popups inside our window.
+             */
+            Browser.CoreWebView2.NewWindowRequested +=
+                (s, args) =>
+                {
+                    args.Handled = true;
 
-            Browser.Source = new Uri("https://tv.apple.com/");
+                    if (!string.IsNullOrWhiteSpace(args.Uri))
+                    {
+                        Browser.CoreWebView2.Navigate(args.Uri);
+                    }
+                };
+
+            /*
+             * Navigate to Apple TV.
+             */
+            Browser.Source =
+                new Uri("https://tv.apple.com/");
         }
+
+        // ============================================================
+        // FULLSCREEN
+        // ============================================================
 
         private void EnterFullscreen()
         {
+            if (_isFullscreen)
+                return;
+
+            // Save current window dimensions.
+            _normalWidth = Width;
+            _normalHeight = Height;
+
+            /*
+             * Remove the Windows title bar/borders.
+             */
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
 
-            // Topmost helps ensure the Windows taskbar doesn't appear
-            // over the application.
+            /*
+             * Make the window cover the screen.
+             */
+            WindowState = WindowState.Maximized;
+
+            /*
+             * Keep it above the taskbar.
+             */
             Topmost = true;
 
-            WindowState = WindowState.Maximized;
+            _isFullscreen = true;
         }
 
         private void ExitFullscreen()
         {
+            if (!_isFullscreen)
+                return;
+
+            /*
+             * Remove Topmost first.
+             */
             Topmost = false;
 
+            /*
+             * Restore normal window mode.
+             */
             WindowState = WindowState.Normal;
+
             WindowStyle = WindowStyle.SingleBorderWindow;
             ResizeMode = ResizeMode.CanResize;
 
-            Width = 1400;
-            Height = 900;
+            /*
+             * Restore the original size.
+             */
+            Width = _normalWidth;
+            Height = _normalHeight;
+
+            _isFullscreen = false;
         }
 
-        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void ToggleFullscreen()
         {
-            // F11 toggles fullscreen
+            if (_isFullscreen)
+            {
+                ExitFullscreen();
+            }
+            else
+            {
+                EnterFullscreen();
+            }
+        }
+
+        private void MainWindow_PreviewKeyDown(
+            object sender,
+            KeyEventArgs e)
+        {
+            /*
+             * F11 = toggle fullscreen.
+             */
             if (e.Key == Key.F11)
             {
-                if (_isFullscreen)
-                {
-                    ExitFullscreen();
-                    _isFullscreen = false;
-                }
-                else
-                {
-                    EnterFullscreen();
-                    _isFullscreen = true;
-                }
+                ToggleFullscreen();
 
                 e.Handled = true;
+                return;
             }
 
-            // Escape exits fullscreen
+            /*
+             * Escape = leave fullscreen.
+             */
             if (e.Key == Key.Escape && _isFullscreen)
             {
                 ExitFullscreen();
-                _isFullscreen = false;
 
                 e.Handled = true;
+                return;
             }
         }
 
+        // ============================================================
+        // DISCORD
+        // ============================================================
+
         private void InitializeDiscord()
         {
-            if (DiscordClientId == "YOUR_DISCORD_APPLICATION_ID")
+            if (DiscordClientId ==
+                "YOUR_DISCORD_APPLICATION_ID")
+            {
                 return;
+            }
 
-            _discord = new DiscordRpcClient(DiscordClientId);
+            _discord =
+                new DiscordRpcClient(DiscordClientId);
+
             _discord.Initialize();
 
             SetPresence(
@@ -138,13 +234,16 @@ namespace AppleTVForPC
             object? sender,
             object e)
         {
-            var title = Browser.CoreWebView2.DocumentTitle;
+            var title =
+                Browser.CoreWebView2.DocumentTitle;
 
             if (string.IsNullOrWhiteSpace(title))
                 return;
 
-            // tv.apple.com titles typically look like:
-            // "<Show/Movie name> - Apple TV"
+            /*
+             * Apple TV page titles commonly end in
+             * one of these strings.
+             */
             string[] suffixes =
             {
                 " - Apple TV",
@@ -160,7 +259,9 @@ namespace AppleTVForPC
                     suffix,
                     StringComparison.OrdinalIgnoreCase))
                 {
-                    showName = title[..^suffix.Length].Trim();
+                    showName =
+                        title[..^suffix.Length].Trim();
+
                     break;
                 }
             }
@@ -192,16 +293,23 @@ namespace AppleTVForPC
                     Details = details,
                     State = state,
 
-                    Timestamps = new Timestamps(
-                        _sessionStart),
+                    Timestamps =
+                        new Timestamps(_sessionStart),
 
                     Assets = new Assets
                     {
-                        LargeImageKey = "appletv_logo",
-                        LargeImageText = "Apple TV+ for PC"
+                        LargeImageKey =
+                            "appletv_logo",
+
+                        LargeImageText =
+                            "Apple TV+ for PC"
                     }
                 });
         }
+
+        // ============================================================
+        // CLOSE
+        // ============================================================
 
         private void MainWindow_Closed(
             object? sender,

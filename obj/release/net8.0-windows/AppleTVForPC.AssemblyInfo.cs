@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppleTVForPC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1c3ce254b2873632d6209055aae91b226bb1cb5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppleTVForPC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppleTVForPC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -28,3 +28,34 @@ C:\Users\stedu\Downloads\Apple tv\obj\release\net8.0-windows\refint\AppleTVForPC
 C:\Users\stedu\Downloads\Apple tv\obj\release\net8.0-windows\AppleTVForPC.pdb
 C:\Users\stedu\Downloads\Apple tv\obj\release\net8.0-windows\AppleTVForPC.genruntimeconfig.cache
 C:\Users\stedu\Downloads\Apple tv\obj\release\net8.0-windows\ref\AppleTVForPC.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\AppleTVForPC.exe
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\AppleTVForPC.deps.json
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\AppleTVForPC.runtimeconfig.json
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\AppleTVForPC.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\AppleTVForPC.pdb
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\DiscordRPC.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\bin\release\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.csproj.AssemblyReference.cache
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\MainWindow.baml
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\MainWindow.g.cs
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\App.g.cs
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC_Content.g.cs
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC_MarkupCompile.cache
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.g.resources
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.AssemblyInfoInputs.cache
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.AssemblyInfo.cs
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.csproj.CoreCompileInputs.cache
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.sourcelink.json
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVF.6CE6105B.Up2Date
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\refint\AppleTVForPC.dll
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.pdb
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\AppleTVForPC.genruntimeconfig.cache
+C:\Users\stedu\OneDrive\Documents\GitHub\AppleTV\obj\release\net8.0-windows\ref\AppleTVForPC.dll

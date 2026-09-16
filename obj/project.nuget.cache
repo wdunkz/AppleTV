@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zwvs03cgMEA=",
+  "dgSpecHash": "txICDl5N9c0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\stedu\\Downloads\\Apple tv\\AppleTVForPC.csproj",
+  "projectFilePath": "C:\\Users\\stedu\\OneDrive\\Documents\\GitHub\\AppleTV\\AppleTVForPC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stedu\\.nuget\\packages\\discordrichpresence\\1.2.1.24\\discordrichpresence.1.2.1.24.nupkg.sha512",
     "C:\\Users\\stedu\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",

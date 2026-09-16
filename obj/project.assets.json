@@ -447,11 +447,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stedu\\Downloads\\Apple tv\\AppleTVForPC.csproj",
+      "projectUniqueName": "C:\\Users\\stedu\\OneDrive\\Documents\\GitHub\\AppleTV\\AppleTVForPC.csproj",
       "projectName": "AppleTVForPC",
-      "projectPath": "C:\\Users\\stedu\\Downloads\\Apple tv\\AppleTVForPC.csproj",
+      "projectPath": "C:\\Users\\stedu\\OneDrive\\Documents\\GitHub\\AppleTV\\AppleTVForPC.csproj",
       "packagesPath": "C:\\Users\\stedu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stedu\\Downloads\\Apple tv\\obj\\",
+      "outputPath": "C:\\Users\\stedu\\OneDrive\\Documents\\GitHub\\AppleTV\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\stedu\\AppData\\Roaming\\NuGet\\NuGet.Config"
